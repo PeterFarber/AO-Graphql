@@ -312,7 +312,7 @@ visit_directive(const struct GraphQLAstDirective *def, void *arg)
 }
 
 static void
-end_visit_directive() { }
+end_visit_directive(const struct GraphQLAstDirective *def, void *arg) { }
 
 static int
 visit_argument(const struct GraphQLAstArgument *def, void *arg)
@@ -332,7 +332,7 @@ visit_argument(const struct GraphQLAstArgument *def, void *arg)
 	return 1;
 }
 
-static void
+static void 
 end_visit_argument(const struct GraphQLAstArgument *def, void *arg)
 {
 	(void)def;
@@ -369,7 +369,7 @@ visit_variable(const struct GraphQLAstVariable *def, void *arg)
 }
 
 static void
-end_visit_variable() { }
+end_visit_variable(const struct GraphQLAstVariable *def, void *arg) { }
 
 static int
 visit_input_value_definition()
@@ -464,7 +464,7 @@ visit_##type##_value(const struct GraphQLAst##snake_type##Value *def, void *arg)
 
 #define END_VISIT_SINGLE_VALUE(type, snake_type) 					\
 static void										\
-end_visit_##type##_value() { }
+end_visit_##type##_value(const struct GraphQLAst##snake_type##Value *def, void *arg) { }
 
 VISIT_SINGLE_VALUE(int, Int)
 END_VISIT_SINGLE_VALUE(int, Int)
@@ -496,7 +496,7 @@ visit_boolean_value(const struct GraphQLAstBooleanValue *def, void *arg)
 }
 
 static void
-end_visit_boolean_value() { }
+end_visit_boolean_value(const struct GraphQLAstBooleanValue *def, void *arg) { }
 
 static int
 visit_null_value(const struct GraphQLAstNullValue *def, void *arg)
@@ -519,7 +519,7 @@ visit_null_value(const struct GraphQLAstNullValue *def, void *arg)
 }
 
 static void
-end_visit_null_value() { }
+end_visit_null_value(const struct GraphQLAstNullValue *def, void *arg) { }
 
 static int
 visit_list_value(const struct GraphQLAstListValue *def, void *arg)
@@ -572,7 +572,7 @@ visit_named_type(const struct GraphQLAstNamedType *def, void *arg)
 }
 
 static void
-end_visit_named_type() { }
+end_visit_named_type(const struct GraphQLAstNamedType *def, void *arg) { }
 
 static int
 visit_non_null_type(const struct GraphQLAstNonNullType *def, void *arg)
